@@ -1,16 +1,85 @@
+```html
 <!DOCTYPE html>
 <html lang="mn">
 
 <head>
     <meta charset="UTF-8">
-    <title>Миний анхны веб хуудас</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бүртгэлийн форм</title>
 </head>
 
 <body>
 
-    <h1>Сайн байна уу!</h1>
-    <p>Энэ бол миний анхны HTML хуудас.</p>
+    <header>
+        <h1>Бүртгэлийн форм</h1>
+        <p>Шинэ хэрэглэгчийн бүртгэл</p>
+    </header>
+
+    <main>
+        <form>
+
+            <label for="name">Нэр:</label>
+            <input type="text" id="name" name="name" placeholder="Нэрээ оруулна уу" pattern="[А-ЯӨҮа-яөүЁёA-Za-z ]+"
+                required>
+            <br><br>
+
+            <label for="email">Имэйл:</label>
+            <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+            <br><br>
+
+            <label for="password">Нууц үг:</label>
+            <input type="password" id="password" name="password" minlength="6" required>
+            <br><br>
+
+            <label for="birthdate">Төрсөн огноо:</label>
+            <input type="date" id="birthdate" name="birthdate" required>
+            <br><br>
+
+            <p>Хүйс:</p>
+
+            <input type="radio" id="male" name="gender" value="male" required>
+            <label for="male">Эрэгтэй</label>
+
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Эмэгтэй</label>
+
+            <br><br>
+
+            <label for="interest">Сонирхол:</label>
+            <select id="interest" name="interest" required>
+                <option value="">Сонгоно уу</option>
+                <option value="programming">Програмчлал</option>
+                <option value="music">Хөгжим</option>
+                <option value="sport">Спорт</option>
+                <option value="reading">Ном унших</option>
+            </select>
+
+            <br><br>
+
+            <p>Дуртай зүйлс:</p>
+
+            <input type="checkbox" id="coding" name="hobby" value="coding">
+            <label for="coding">Код бичих</label>
+
+            <input type="checkbox" id="gaming" name="hobby" value="gaming">
+            <label for="gaming">Тоглоом</label>
+
+            <input type="checkbox" id="movie" name="hobby" value="movie">
+            <label for="movie">Кино</label>
+
+            <br><br>
+
+            <button type="submit">Бүртгүүлэх</button>
+            <button type="reset">Цэвэрлэх</button>
+
+        </form>
+    </main>
+
+    <footer>
+        <p>© 2026 Бүртгэлийн систем</p>
+    </footer>
 
 </body>
 
 </html>
+```
