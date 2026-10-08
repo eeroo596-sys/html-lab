@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="mn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЛАБ 4 - Web Layout</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f6f8;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #1e293b;
+            color: #fff;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #e2e8f0;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            width: 100%;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            flex: 1;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card h3 {
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+        }
+
+        .card p {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .card button {
+            align-self: flex-start;
+            padding: 0.5rem 1rem;
+            background-color: #0284c7;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background-color: #0369a1;
+        }
+
+        aside {
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            height: fit-content;
+        }
+
+        aside h3 {
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+
+        aside ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        aside a {
+            color: #0284c7;
+            text-decoration: none;
+        }
+
+        aside a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            padding: 1.5rem 2rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">MyWebLayout</div>
+            <ul class="nav-links">
+                <li><a href="#">Нүүр</a></li>
+                <li><a href="#">Үйлчилгээ</a></li>
+                <li><a href="#">Мэдээлэл</a></li>
+                <li><a href="#">Холбоо барих</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main class="main-content">
+            <h2>Үндсэн агуулга</h2>
+            <div class="card-grid">
+                <article class="card">
+                    <h3>Карт 1</h3>
+                    <p>Flexbox болон Grid ашиглан хийсэн эхний картын мэдээллийн хэсэг.</p>
+                    <button>Дэлгэрэнгүй</button>
+                </article>
+
+                <article class="card">
+                    <h3>Карт 2</h3>
+                    <p>Grid layout нь багануудыг автоматаар жигд хуваарилах давуу талтай.</p>
+                    <button>Дэлгэрэнгүй</button>
+                </article>
+
+                <article class="card">
+                    <h3>Карт 3</h3>
+                    <p>Гурав дахь баганын карт. Сүлжээний бүтэц цэвэрхэн харагдана.</p>
+                    <button>Дэлгэрэнгүй</button>
+                </article>
+
+                <article class="card">
+                    <h3>Карт 4</h3>
+                    <p>Нэмэлт карт оруулснаар сүлжээ хэрхэн өргөжихийг харах боломжтой.</p>
+                    <button>Дэлгэрэнгүй</button>
+                </article>
+            </div>
+        </main>
+
+        <aside>
+            <h3>Хажуу цэс</h3>
+            <ul>
+                <li><a href="#">Шинэ мэдээ мэдээлэл</a></li>
+                <li><a href="#">Онцлох нийтлэлүүд</a></li>
+                <li><a href="#">Байнга асуудаг асуултууд</a></li>
+                <li><a href="#">Үйлчилгээний нөхцөл</a></li>
+            </ul>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 ЛАБ 4 Вэб Сайтын Макетинг.</p>
+            <p>Flexbox &amp; CSS Grid Layout</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
