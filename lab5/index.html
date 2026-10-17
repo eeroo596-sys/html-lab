@@ -4,46 +4,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лаборатори 5</title>
+    <title>Анхбаяр - Товч CV</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <header class="header">
-        <div class="logo">WebLab</div>
+        <div class="logo">Анхбаяр</div>
         <nav class="nav">
-            <a href="#">Нүүр</a>
-            <a href="#">Мэдээлэл</a>
-            <a href="#">Үйлчилгээ</a>
-            <a href="#">Холбоо барих</a>
+            <a href="#about">Миний тухай</a>
+            <a href="#interest">Сонирхол</a>
+            <a href="#learning">Суралцаж буй зүйлс</a>
+            <a href="#goal">Зорилго</a>
+            <a href="#contact">Холбоо барих</a>
         </nav>
     </header>
 
     <main class="main">
         <section class="banner">
-            <h2>Welcome to My Website</h2>
-            <p>Responsive Web Design - Lab 5</p>
+            <h2>А.Эхрэмбилэг</h2>
+            <p>Мэдээллийн систем - 2-р курсийн оюутан</p>
         </section>
 
-        <section class="cards-grid">
-            <div class="card">
-                <h3>Карт 1</h3>
-                <p>Энд картын агуулга болон мэдээлэл орно.</p>
+        <div class="cards-grid">
+            <div class="card" id="about">
+                <h3>Миний тухай</h3>
+                <p>Мэдээллийн системийн чиглэлээр суралцах хугацаандаа эзэмшсэн мэдлэгээ гүнзгийрүүлж, програмчлалын
+                    чадвараа хөгжүүлэхийг зорин суралцаж байна.</p>
             </div>
-            <div class="card">
-                <h3>Карт 2</h3>
-                <p>Энд картын агуулга болон мэдээлэл орно.</p>
+
+            <div class="card" id="interest">
+                <h3>Сонирхол</h3>
+                <ul>
+                    <li>Мэдээллийн систем</li>
+                    <li>Програмчлал</li>
+                    <li>Өгөгдлийн бааз</li>
+                    <li>Өгөгдлийн бүтэц ба алгоритм</li>
+                    <li>Шинэ технологи</li>
+                </ul>
             </div>
-            <div class="card">
-                <h3>Карт 3</h3>
-                <p>Энд картын агуулга болон мэдээлэл орно.</p>
+
+            <div class="card" id="learning">
+                <h3>Суралцаж буй зүйлс</h3>
+                <ul>
+                    <li>Java програмчлал</li>
+                    <li>Өгөгдлийн бүтэц, алгоритм</li>
+                    <li>Өгөгдлийн баазын систем</li>
+                    <li>Вэб зохиомжийн үндэс</li>
+                </ul>
             </div>
-        </section>
+        </div>
+
+        <div class="cards-grid" style="margin-top: 15px;">
+            <div class="card" id="goal">
+                <h3>Зорилго</h3>
+                <p>Мэдээллийн системийн салбарт мэдлэг болон ур чадвараа дээшлүүлж, ирээдүйд мэргэжлээрээ амжилттай
+                    ажиллах туршлага хуримтлуулах.</p>
+            </div>
+
+            <div class="card" id="contact">
+                <h3>Холбоо барих</h3>
+                <p>GitHub хаяг: <a href="https://github.com" target="_blank" style="color: #4CAF50;">GitHub Link</a></p>
+            </div>
+        </div>
     </main>
 
     <footer class="footer">
-        <p>&copy; 2026 Лаборатори 5</p>
+        <p>&copy; 2026 А.Эхрэмбилэг - Лаборатори 5</p>
     </footer>
 
 </body>
