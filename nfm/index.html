@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="mn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Монгол 13 Хөзрийн Тоглоом</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1b4332;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #login-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            gap: 15px;
+            padding: 20px;
+        }
+
+        input,
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        button {
+            background-color: #2d6a4f;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #52b788;
+        }
+
+        #game-screen {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100vh;
+            padding: 10px;
+            position: relative;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            z-index: 10;
+        }
+
+        /* Ширээний байрлал (4 талтай покер ширээ) */
+        .table-center {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 10px auto;
+            width: 95%;
+            max-width: 850px;
+            height: 60vh;
+            background-color: #221712;
+            border: 4px solid #3d281f;
+            border-radius: 20px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(0, 0, 0, 0.8);
+        }
+
+        /* 4 талын тоглогчдын байрлал */
+        .player-seat {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid #555;
+            padding: 8px 15px;
+            border-radius: 15px;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        #seat-top {
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #seat-left {
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #seat-right {
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .played-cards-area {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .player-hand {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            overflow-x: auto;
+            padding: 10px 5px;
+            max-width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+
+        .card {
+            min-width: 45px;
+            height: 70px;
+            background: white;
+            color: black;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .card.selected {
+            transform: translateY(-15px);
+            background-color: #e9ecef;
+            border: 2px solid #52b788;
+        }
+
+        .card.red {
+            color: #d62828;
+        }
+
+        .action-bar {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+
+        .action-btn {
+            padding: 10px 20px;
+            background-color: #2d6a4f;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .action-btn:hover {
+            background-color: #52b788;
+        }
+
+        #start-btn {
+            background-color: #e63946;
+            margin-top: 15px;
+        }
+
+        #start-btn:hover {
+            background-color: #d62828;
+        }
+
+        .turn-indicator {
+            color: #ffd166;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Нэвтрэх хэсэг -->
+    <div id="login-screen">
+        <h2>Монгол 13 Тоглоом</h2>
+        <input type="text" id="username" placeholder="Таны нэр">
+        <input type="text" id="roomCode" placeholder="Өрөөний код (Жишээ нь: 1234)">
+        <button onclick="joinRoom()">Өрөө үүсгэх / Орох</button>
+    </div>
+
+    <!-- Тоглоомын дэлгэц -->
+    <div id="game-screen">
+        <div class="top-bar">
+            <div>Өрөө: <b id="display-room">-</b></div>
+            <div>Тоглогч: <b id="display-user">-</b></div>
+            <div class="turn-indicator" id="turn-text">Ээлж: -</div>
+        </div>
+
+        <div class="table-center" id="table-cards">
+            <!-- 4 талын суудал -->
+            <div class="player-seat" id="seat-top" style="display:none;">Дээд тоглогч</div>
+            <div class="player-seat" id="seat-left" style="display:none;">Зүүн тоглогч</div>
+            <div class="player-seat" id="seat-right" style="display:none;">Баруун тоглогч</div>
+
+            <p style="opacity: 0.8; font-size: 16px;" id="status-text">Тоглоом эхлэхийг хүлээж байна...</p>
+            <button id="start-btn" onclick="dealCards()">Тоглоом эхлүүлэх (Хөзөр холих)</button>
+
+            <div class="played-cards-area" id="played-area"></div>
+        </div>
+
+        <div class="action-bar">
+            <button class="action-btn" onclick="playSelectedCards()">Сонгосон хөзрүүдийг хаях</button>
+        </div>
+
+        <div class="player-hand" id="my-hand"></div>
+    </div>
+
+    <script>
+        let currentRoom = "";
+        let username = "";
+        let myHand = [];
+        let selectedCards = new Set();
+        let roomKey = "";
+
+        const valueMap = { '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14, '2': 15 };
+        const suitMap = { '♠': 4, '♥': 3, '♣': 2, '♦': 1 };
+
+        function joinRoom() {
+            username = document.getElementById('username').value.trim();
+            currentRoom = document.getElementById('roomCode').value.trim();
+
+            if (!username || !currentRoom) {
+                alert('Нэр болон өрөөний кодоо оруулна уу!');
+                return;
+            }
+
+            roomKey = 'room_state_' + currentRoom;
+
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('game-screen').style.display = 'flex';
+            document.getElementById('display-room').innerText = currentRoom;
+            document.getElementById('display-user').innerText = username;
+
+            let roomData = JSON.parse(localStorage.getItem(roomKey)) || { players: [], hands: {}, lastPlayed: null, gameStarted: false, turnIndex: 0 };
+
+            if (!roomData.players.includes(username)) {
+                roomData.players.push(username);
+            }
+
+            localStorage.setItem(roomKey, JSON.stringify(roomData));
+
+            setInterval(syncRoom, 500);
+        }
+
+        function syncRoom() {
+            let roomData = JSON.parse(localStorage.getItem(roomKey));
+            if (!roomData) return;
+
+            // 4 талын байрлалаар тоглогчдыг харуулах
+            let otherPlayers = roomData.players.filter(p => p !== username);
+
+            document.getElementById('seat-top').style.display = 'none';
+            document.getElementById('seat-left').style.display = 'none';
+            document.getElementById('seat-right').style.display = 'none';
+
+            if (otherPlayers[0]) {
+                document.getElementById('seat-top').style.display = 'block';
+                document.getElementById('seat-top').innerText = `🔼 ${otherPlayers[0]} (${roomData.hands[otherPlayers[0]]?.length || 13} карт)`;
+            }
+            if (otherPlayers[1]) {
+                document.getElementById('seat-left').style.display = 'block';
+                document.getElementById('seat-left').innerText = `◀ ${otherPlayers[1]} (${roomData.hands[otherPlayers[1]]?.length || 13} карт)`;
+            }
+            if (otherPlayers[2]) {
+                document.getElementById('seat-right').style.display = 'block';
+                document.getElementById('seat-right').innerText = `▶ ${otherPlayers[2]} (${roomData.hands[otherPlayers[2]]?.length || 13} карт)`;
+            }
+
+            // Ээлжийг харуулах
+            if (roomData.gameStarted) {
+                let currentTurnPlayer = roomData.players[roomData.turnIndex];
+                document.getElementById('turn-text').innerText = `Ээлж: ${currentTurnPlayer}`;
+            }
+
+            // Тоглоом эхэлсэн эсэх
+            if (roomData.gameStarted && roomData.hands[username]) {
+                myHand = roomData.hands[username];
+                document.getElementById('status-text').style.display = 'none';
+                document.getElementById('start-btn').style.display = 'none';
+                renderHand();
+            }
+
+            // Ширээн дээр хаягдсан хөзөр
+            if (roomData.lastPlayed) {
+                const area = document.getElementById('played-area');
+                document.getElementById('status-text').style.display = 'block';
+                document.getElementById('status-text').innerText = `${roomData.lastPlayed.player} хаялаа:`;
+                area.innerHTML = roomData.lastPlayed.cards.map(c => {
+                    const isRed = c.suit === '♥' || c.suit === '♦' ? 'red' : '';
+                    return `<div class="card ${isRed}"><span>${c.value}</span><span>${c.suit}</span></div>`;
+                }).join('');
+            }
+        }
+
+        function dealCards() {
+            let roomData = JSON.parse(localStorage.getItem(roomKey));
+            if (!roomData) return;
+
+            let deck = [];
+            const suits = ['♠', '♥', '♣', '♦'];
+            const values = ['3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A', '2'];
+
+            for (let s of suits) {
+                for (let v of values) {
+                    deck.push({ suit: s, value: v });
+                }
+            }
+
+            // Санамсаргүй байдлаар холих
+            for (let i = deck.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                [deck[i], deck[j]] = [deck[j], deck[i]];
+            }
+
+            let handsData = {};
+            roomData.players.forEach((pName, index) => {
+                let pHand = deck.slice(index * 13, (index + 1) * 13);
+                sortHand(pHand);
+                handsData[pName] = pHand;
+            });
+
+            // Хамгийн муу хөзөртэй (Дөрвөлжин 3 эсвэл хамгийн бага) хүнээр эхлүүлэх
+            let lowestIndex = 0;
+            let minVal = 99;
+            roomData.players.forEach((pName, pIdx) => {
+                let hand = handsData[pName];
+                let weakestCard = hand[hand.length - 1]; // Томоос жижиг рүү эрэмбэлсэн тул хамгийн ар талд байгаа нь хамгийн бага нь
+                if (valueMap[weakestCard.value] < minVal) {
+                    minVal = valueMap[weakestCard.value];
+                    lowestIndex = pIdx;
+                }
+            });
+
+            roomData.hands = handsData;
+            roomData.gameStarted = true;
+            roomData.turnIndex = lowestIndex; // Хамгийн муу хөзөртэй хүн түрүүлж гарна
+            localStorage.setItem(roomKey, JSON.stringify(roomData));
+
+            syncRoom();
+        }
+
+        function sortHand(hand) {
+            hand.sort((a, b) => {
+                if (valueMap[a.value] !== valueMap[b.value]) {
+                    return valueMap[b.value] - valueMap[a.value];
+                }
+                return suitMap[b.suit] - suitMap[a.suit];
+            });
+        }
+
+        function renderHand() {
+            const handDiv = document.getElementById('my-hand');
+            handDiv.innerHTML = '';
+
+            myHand.forEach((card, index) => {
+                const cardEl = document.createElement('div');
+                const isRed = card.suit === '♥' || card.suit === '♦' ? 'red' : '';
+                cardEl.className = `card ${isRed} ${selectedCards.has(index) ? 'selected' : ''}`;
+                cardEl.innerHTML = `<span>${card.value}</span><span>${card.suit}</span>`;
+                cardEl.onclick = () => toggleSelectCard(index);
+                handDiv.appendChild(cardEl);
+            });
+        }
+
+        function toggleSelectCard(index) {
+            if (selectedCards.has(index)) {
+                selectedCards.delete(index);
+            } else {
+                selectedCards.add(index);
+            }
+            renderHand();
+        }
+
+        function playSelectedCards() {
+            let roomData = JSON.parse(localStorage.getItem(roomKey));
+
+            // Ээлж шалгах
+            if (roomData.players[roomData.turnIndex] !== username) {
+                alert('Таны ээлж биш байна!');
+                return;
+            }
+
+            if (selectedCards.size === 0) {
+                alert('Хаях хөзрөө сонгоно уу!');
+                return;
+            }
+
+            let cardsToPlay = [];
+            selectedCards.forEach(index => {
+                cardsToPlay.push(myHand[index]);
+            });
+
+            sortHand(cardsToPlay);
+
+            roomData.lastPlayed = {
+                player: username,
+                cards: cardsToPlay
+            };
+
+            myHand = myHand.filter((_, index) => !selectedCards.has(index));
+            roomData.hands[username] = myHand;
+
+            // Цагийн зүүний дагуу ээлжийг дараагийн тоглогч руу шилжүүлэх
+            roomData.turnIndex = (roomData.turnIndex + 1) % roomData.players.length;
+
+            localStorage.setItem(roomKey, JSON.stringify(roomData));
+            selectedCards.clear();
+            syncRoom();
+        }
+    </script>
+</body>
+
+</html>

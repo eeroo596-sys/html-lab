@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="mn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erkhembileg lab6</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">Erkhembileg</div>
+        <nav class="nav">
+            <a href="#gallery">Зургийн цомог</a>
+            <a href="#about">Миний тухай</a>
+            <a href="#interest">Сонирхол</a>
+            <a href="#learning">Суралцаж буй зүйлс</a>
+            <a href="#goal">Зорилго</a>
+            <a href="#contact">Холбоо барих</a>
+            <a href="#multimedia">Мультимедиа</a>
+            <button id="theme-toggle">Dark Mode</button>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="banner">
+            <h2>А.Эхрэмбилэг</h2>
+            <p>Мэдээллийн систем - 2-р курсийн оюутан</p>
+        </section>
+
+        <div class="cards-grid" id="gallery">
+            <div class="card">
+                <img src="img/EMPOWERMENT.jpg" alt="Photo 1" style="width:100%; border-radius:4px; margin-bottom:10px;">
+                <h3>Зураг 1</h3>
+                <p>Лаборатори 4, 5-ын үргэлжлэл зургийн цомог.</p>
+            </div>
+            <div class="card">
+                <img src="img/EMPOWERMENT.jpg" alt="Photo 2" style="width:100%; border-radius:4px; margin-bottom:10px;">
+                <h3>Зураг 2</h3>
+                <p>CSS3 анимаци болон трансформ ашиглах хэсэг.</p>
+            </div>
+            <div class="card">
+                <img src="img/EMPOWERMENT.jpg" alt="Photo 3" style="width:100%; border-radius:4px; margin-bottom:10px;">
+                <h3>Зураг 3</h3>
+                <p>Custom properties болон theme тохиргоо.</p>
+            </div>
+        </div>
+
+        <div class="cards-grid" style="margin-top: 15px;">
+            <div class="card" id="about">
+                <h3>Миний тухай</h3>
+                <p>Мэдээллийн системийн чиглэлээр суралцах хугацаандаа эзэмшсэн мэдлэгээ гүнзгийрүүлж, програмчлалын
+                    чадвараа хөгжүүлэхийг зорин суралцаж байна.</p>
+            </div>
+
+            <div class="card" id="interest">
+                <h3>Сонирхол</h3>
+                <ul>
+                    <li>Мэдээллийн систем</li>
+                    <li>Програмчлал</li>
+                    <li>Өгөгдлийн бааз</li>
+                    <li>Өгөгдлийн бүтэц ба алгоритм</li>
+                    <li>Шинэ технологи</li>
+                </ul>
+            </div>
+
+            <div class="card" id="learning">
+                <h3>Суралцаж буй зүйлс</h3>
+                <ul>
+                    <li>Java програмчлал</li>
+                    <li>Өгөгдлийн бүтэц, алгоритм</li>
+                    <li>Өгөгдлийн баазын систем</li>
+                    <li>Вэб зохиомжийн үндэс</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cards-grid" style="margin-top: 15px;">
+            <div class="card" id="goal">
+                <h3>Зорилго</h3>
+                <p>Мэдээллийн системийн салбарт мэдлэг болон ур чадвараа дээшлүүлж, ирээдүйд мэргэжлээрээ амжилттай
+                    ажиллах туршлага хуримтлуулах.</p>
+            </div>
+
+            <div class="card" id="contact">
+                <h3>Холбоо барих</h3>
+                <p>GitHub хаяг: <a href="https://github.com" target="_blank" style="color: #4CAF50;">GitHub Link</a></p>
+            </div>
+        </div>
+
+        <section class="multimedia-section" id="multimedia" style="margin-top: 15px;">
+            <div class="card">
+                <h3>Мультимедиа</h3>
+                <video controls width="100%" style="margin-top: 10px; border-radius: 4px;">
+                    <source src="video/clip.mp4" type="video/mp4">
+                    <source src="video/clip.webm" type="video/webm">
+                    <track src="video/clip.mn.vtt" kind="subtitles" srclang="mn" label="Монгол">
+                    Таны браузер видеог дэмжихгүй байна.
+                </video>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 А.Эхрэмбилэг - Лаборатори 6</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
