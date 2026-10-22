@@ -3,108 +3,128 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Erkhembileg lab6</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Лаб 6 - Го ба Даам Animation & Multimedia</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header class="header">
-        <div class="logo">Erkhembileg</div>
-        <nav class="nav">
-            <a href="#gallery">Зургийн цомог</a>
-            <a href="#about">Миний тухай</a>
-            <a href="#interest">Сонирхол</a>
-            <a href="#learning">Суралцаж буй зүйлс</a>
-            <a href="#goal">Зорилго</a>
-            <a href="#contact">Холбоо барих</a>
-            <a href="#multimedia">Мультимедиа</a>
-            <button id="theme-toggle">Dark Mode</button>
-        </nav>
+    <header>
+        <div class="wrap navbar">
+            <div class="logo">
+                <svg width="30" height="30" viewBox="0 0 100 100" class="logo-svg">
+                    <circle cx="50" cy="50" r="45" fill="var(--teal)" />
+                    <circle cx="35" cy="50" r="15" fill="#000" />
+                    <circle cx="65" cy="50" r="15" fill="#fff" />
+                </svg>
+                <span>Го &amp; Даам Portal</span>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Dark mode toggle">Dark Mode</button>
+        </div>
     </header>
 
-    <main class="main">
-        <section class="banner">
-            <h2>А.Эхрэмбилэг</h2>
-            <p>Мэдээллийн систем - 2-р курсийн оюутан</p>
+    <main class="wrap">
+
+        <section class="hero">
+            <h1 class="stagger-text">
+                <span style="--i:1">Го</span>
+                <span style="--i:2">ба</span>
+                <span style="--i:3">Даам:</span>
+                <span style="--i:4">Байрлал</span>
+                <span style="--i:5">ба</span>
+                <span style="--i:6">Анимаци</span>
+            </h1>
+            <p>Зураг дээр хулганаа авчирч (hover) 3D байдлаар эргүүлэн тоглоомын байрлал болон дүрмийн тайлбарыг харна
+                уу.</p>
         </section>
 
-        <div class="cards-grid" id="gallery">
-            <div class="card">
-                <img src="img/EMPOWERMENT.jpg" alt="Photo 1" style="width:100%; border-radius:4px; margin-bottom:10px;">
-                <h3>Зураг 1</h3>
-                <p>Лаборатори 4, 5-ын үргэлжлэл зургийн цомог.</p>
-            </div>
-            <div class="card">
-                <img src="img/EMPOWERMENT.jpg" alt="Photo 2" style="width:100%; border-radius:4px; margin-bottom:10px;">
-                <h3>Зураг 2</h3>
-                <p>CSS3 анимаци болон трансформ ашиглах хэсэг.</p>
-            </div>
-            <div class="card">
-                <img src="img/EMPOWERMENT.jpg" alt="Photo 3" style="width:100%; border-radius:4px; margin-bottom:10px;">
-                <h3>Зураг 3</h3>
-                <p>Custom properties болон theme тохиргоо.</p>
-            </div>
-        </div>
+        <section class="gallery-section">
+            <h2>Тоглоомын Байрлалын Тайлбар (3D Flip Cards)</h2>
+            <div class="card-grid">
 
-        <div class="cards-grid" style="margin-top: 15px;">
-            <div class="card" id="about">
-                <h3>Миний тухай</h3>
-                <p>Мэдээллийн системийн чиглэлээр суралцах хугацаандаа эзэмшсэн мэдлэгээ гүнзгийрүүлж, програмчлалын
-                    чадвараа хөгжүүлэхийг зорин суралцаж байна.</p>
-            </div>
+                <div class="card-3d" tabindex="0">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src="img/go1.jpg" alt="Го эхлэл байрлал">
+                            <h3>Го: Эхлэл байрлал (Star points)</h3>
+                        </div>
+                        <div class="card-back">
+                            <h3>Байрлалын Тайлбар</h3>
+                            <p>Эхлээд самбарын 4 буюу "Хоши" (Star points) дээр эзэмшил тогтоох байрлал авдаг.</p>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="card" id="interest">
-                <h3>Сонирхол</h3>
-                <ul>
-                    <li>Мэдээллийн систем</li>
-                    <li>Програмчлал</li>
-                    <li>Өгөгдлийн бааз</li>
-                    <li>Өгөгдлийн бүтэц ба алгоритм</li>
-                    <li>Шинэ технологи</li>
-                </ul>
-            </div>
+                <div class="card-3d" tabindex="0">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src="img/go2.jpg" alt="Го амьсгал хаах">
+                            <h3>Го: Амьсгал хаах байрлал</h3>
+                        </div>
+                        <div class="card-back">
+                            <h3>Байрлалын Тайлбар</h3>
+                            <p>Эсрэг талын чулууны 4 талын хоосон огтлолцол (амьсгал)-ыг бүрэн хааж байрлуулснаар
+                                барьдаг.</p>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="card" id="learning">
-                <h3>Суралцаж буй зүйлс</h3>
-                <ul>
-                    <li>Java програмчлал</li>
-                    <li>Өгөгдлийн бүтэц, алгоритм</li>
-                    <li>Өгөгдлийн баазын систем</li>
-                    <li>Вэб зохиомжийн үндэс</li>
-                </ul>
-            </div>
-        </div>
+                <div class="card-3d" tabindex="0">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src="img/checkers1.jpg" alt="Даам өрөг байрлуулалт">
+                            <h3>Даам: Өрөг байрлуулалт</h3>
+                        </div>
+                        <div class="card-back">
+                            <h3>Байрлалын Тайлбар</h3>
+                            <p>8x8 самбарын зөвхөн хар нүднүүд дээр эхний 3 эгнээнд 12 шашкыг эсрэгцүүлэн байрлуулах.
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="cards-grid" style="margin-top: 15px;">
-            <div class="card" id="goal">
-                <h3>Зорилго</h3>
-                <p>Мэдээллийн системийн салбарт мэдлэг болон ур чадвараа дээшлүүлж, ирээдүйд мэргэжлээрээ амжилттай
-                    ажиллах туршлага хуримтлуулах.</p>
-            </div>
+                <div class="card-3d" tabindex="0">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src="img/checkers2.jpg" alt="Даам дам болох">
+                            <h3>Даам: "Дам" болох байрлал</h3>
+                        </div>
+                        <div class="card-back">
+                            <h3>Байрлалын Тайлбар</h3>
+                            <p>Шашк эсрэг талын хамгийн сүүлчийн эгнээнд хүрснээр 'Даaм' болж, диагональ дагуу явах
+                                боломжтой болно.</p>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="card" id="contact">
-                <h3>Холбоо барих</h3>
-                <p>GitHub хаяг: <a href="https://github.com" target="_blank" style="color: #4CAF50;">GitHub Link</a></p>
-            </div>
-        </div>
-
-        <section class="multimedia-section" id="multimedia" style="margin-top: 15px;">
-            <div class="card">
-                <h3>Мультимедиа</h3>
-                <video controls width="100%" style="margin-top: 10px; border-radius: 4px;">
-                    <source src="video/clip.mp4" type="video/mp4">
-                    <source src="video/clip.webm" type="video/webm">
-                    <track src="video/clip.mn.vtt" kind="subtitles" srclang="mn" label="Монгол">
-                    Таны браузер видеог дэмжихгүй байна.
-                </video>
             </div>
         </section>
+
+        <section class="media-section">
+            <h2>Мультимедиа Хэсэг (Video & Frame)</h2>
+            <div class="media-grid">
+                <div class="media-box">
+                    <h3>Тоглоомын бичлэг (Video + Track)</h3>
+                    <video controls poster="img/go1.jpg">
+                        <source src="video/clip.mp4" type="video/mp4">
+                        <source src="video/clip.webm" type="video/webm">
+                        <track src="video/clip.vtt" kind="subtitles" srclang="mn" label="Монгол субтитр" default>
+                        Таны хөтөч видео тоглохыг дэмжихгүй байна.
+                    </video>
+                </div>
+                <div class="media-box">
+                    <h3>Байрлалын Онлайн Хичээл (Iframe)</h3>
+                    <iframe src="https://www.youtube.com/embed/Lh-_4fh5plI" title="Go Board Game Trailer"
+                        allowfullscreen></iframe> allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <footer class="footer">
-        <p>&copy; 2026 А.Эхрэмбилэг - Лаборатори 6</p>
+    <footer>
+        <p>&copy; 2026 Лаб 6. CSS3 Animation, Transform &amp; Multimedia.</p>
     </footer>
 
     <script src="script.js"></script>

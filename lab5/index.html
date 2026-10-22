@@ -3,76 +3,174 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Erkhembileg lab5</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Го ба Даам - Ширээний тоглоом</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header class="header">
-        <div class="logo">Erkhembileg</div>
-        <nav class="nav">
-            <a href="#about">Миний тухай</a>
-            <a href="#interest">Сонирхол</a>
-            <a href="#learning">Суралцаж буй зүйлс</a>
-            <a href="#goal">Зорилго</a>
-            <a href="#contact">Холбоо барих</a>
-        </nav>
+    <div class="device-toolbar">
+        <span>Экраны хэмжээ шалгах:</span>
+        <button class="device-btn" onclick="setDevice('desktop')">Компьютер</button>
+        <button class="device-btn" onclick="setDevice('tablet')">Таблет (768px)</button>
+        <button class="device-btn" onclick="setDevice('mobile')">Утас (375px)</button>
+    </div>
+
+    <header>
+        <div class="wrap navbar">
+            <div class="logo">Го &amp; Даам</div>
+            <button class="menu-btn" id="menuBtn" aria-label="Цэс нээх">&#9776;</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Нүүр</a></li>
+                <li><a href="#go">Го</a></li>
+                <li><a href="#daam">Даам</a></li>
+                <li><a href="#compare">Харьцуулалт</a></li>
+            </ul>
+        </div>
     </header>
 
-    <main class="main">
-        <section class="banner">
-            <h2>А.Эхрэмбилэг</h2>
-            <p>Мэдээллийн систем - 2-р курсийн оюутан</p>
+    <main class="wrap" id="mainContainer">
+
+        <section class="hero" id="home">
+            <h1>Го ба Даам: юу вэ, яаж тоглодог вэ?</h1>
+            <p>Го болон Даам бол хоёр хүн тоглодог, оюун ухаан, тооцоолол шаарддаг ширээний тоглоомууд юм. Энд тоглоом
+                бүрийн товч түүх, хэрэгсэл, тоглох дүрмийг тайлбарласан.</p>
+            <a class="btn" href="#go">Го</a>
+            <a class="btn btn-light" href="#daam">Даам руу очих</a>
         </section>
 
-        <div class="cards-grid">
-            <div class="card" id="about">
-                <h3>Миний тухай</h3>
-                <p>Мэдээллийн системийн чиглэлээр суралцах хугацаандаа эзэмшсэн мэдлэгээ гүнзгийрүүлж, програмчлалын
-                    чадвараа хөгжүүлэхийг зорин суралцаж байна.</p>
+        <section id="go">
+            <h2>Го гэж юу вэ?</h2>
+            <div class="two-col">
+                <div class="panel">
+                    <h3>Тоглоомын тухай</h3>
+                    <p>Го бол Хятадад 2500 гаруй жилийн өмнө үүссэн эртний тоглоом (Хятадаар вэйчи, Солонгосоор бадук).
+                        Хар, цагаан хоёр өнгийн чулууг самбарын шугамуудын огтлолцол дээр тавьж, илүү их нутаг эзлэхийн
+                        төлөө өрсөлддөг.</p>
+                    <div class="info-row"><b>Самбар:</b><span>19x19 шугам (эхлэгчид 9x9, 13x13-аар тоглодог)</span>
+                    </div>
+                    <div class="info-row"><b>Хэрэгсэл:</b><span>Хар болон цагаан чулуу</span></div>
+                    <div class="info-row"><b>Зорилго:</b><span>Илүү их нутаг (талбай) эзлэх</span></div>
+                </div>
+                <div class="panel">
+                    <h3>Яаж тоглодог вэ?</h3>
+                    <ol class="steps">
+                        <li>Хар чулуутай тоглогч эхэлнэ, дараа нь ээлжлэн нэг чулуу тавина.</li>
+                        <li>Чулууг шугамуудын огтлолцол дээр тавина. Тавьсан чулууг хөдөлгөдөггүй.</li>
+                        <li>Чулууны хажуудах хоосон огтлолцлыг "амьсгал" гэнэ.</li>
+                        <li>Чулуу эсвэл бүлэг чулууны амьсгал бүгд хаагдвал эсрэг талд баригдаж, самбараас авагдана.
+                        </li>
+                        <li>Ээлж өнгөрөөж болно. Хоёр тоглогч дараалан ээлжээ өнгөрөөвөл тоглоом дуусна.</li>
+                        <li>Эзэлсэн нутгаа тоолж, илүү оноотой тоглогч ялна. Цагаан тал хожигдлоо нөхөх оноо (коми)
+                            авдаг.</li>
+                    </ol>
+                </div>
             </div>
+        </section>
 
-            <div class="card" id="interest">
-                <h3>Сонирхол</h3>
-                <ul>
-                    <li>Мэдээллийн систем</li>
-                    <li>Програмчлал</li>
-                    <li>Өгөгдлийн бааз</li>
-                    <li>Өгөгдлийн бүтэц ба алгоритм</li>
-                    <li>Шинэ технологи</li>
-                </ul>
+        <section id="daam">
+            <h2>Даам гэж юу вэ?</h2>
+            <div class="two-col">
+                <div class="panel">
+                    <h3>Тоглоомын тухай</h3>
+                    <p>Даам бол Монголд өргөн тоглодог шатарт төстэй тоглоом (олон улсад draughts, checkers гэдэг). Хар,
+                        цагаан дараалсан нүдтэй самбар дээр хоёр тоглогч өөрийн шашкаар диагональ дагуу явж, эсрэг талын
+                        шашкыг идэхийг хичээдэг.</p>
+                    <div class="info-row"><b>Самбар:</b><span>8x8 нүд, зөвхөн хар нүдээр явна</span></div>
+                    <div class="info-row"><b>Хэрэгсэл:</b><span>Тоглогч бүрт 12 шашк</span></div>
+                    <div class="info-row"><b>Зорилго:</b><span>Эсрэг талын бүх шашкыг идэх эсвэл явах боломжгүй
+                            болгох</span></div>
+                </div>
+                <div class="panel">
+                    <h3>Яаж тоглодог вэ?</h3>
+                    <ol class="steps">
+                        <li>Шашкуудаа өөрийн талын эхний гурван эгнээний хар нүд дээр байрлуулна.</li>
+                        <li>Ердийн шашк урагш диагональ дагуу нэг нүдээр явна.</li>
+                        <li>Эсрэг талын шашк хажууд нь байж, ард нь хоосон нүд байвал дээгүүр нь үсэрч идэнэ.</li>
+                        <li>Идэх боломж гарвал заавал идэх ёстой. Дараалан олон шашк идэж болно.</li>
+                        <li>Шашк эсрэг талын хамгийн сүүлийн эгнээнд хүрвэл дам болно.</li>
+                        <li>Дам диагональ дагуу хэдэн ч нүдээр урагш, хойш явж чадна.</li>
+                    </ol>
+                </div>
             </div>
+            <p class="small-note">Даамын дүрэм улс орон, төрлөөс хамаарч бага зэрэг ялгаатай байдаг (жишээ нь Оросын
+                болон Англи даам).</p>
+        </section>
 
-            <div class="card" id="learning">
-                <h3>Суралцаж буй зүйлс</h3>
-                <ul>
-                    <li>Java програмчлал</li>
-                    <li>Өгөгдлийн бүтэц, алгоритм</li>
-                    <li>Өгөгдлийн баазын систем</li>
-                    <li>Вэб зохиомжийн үндэс</li>
-                </ul>
+        <section id="compare">
+            <h2>Го ба Даамын харьцуулалт</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Үзүүлэлт</th>
+                            <th>Го</th>
+                            <th>Даам</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Үүссэн газар</td>
+                            <td>Хятад</td>
+                            <td>Европ, Ойрх Дорнод</td>
+                        </tr>
+                        <tr>
+                            <td>Самбар</td>
+                            <td>19x19 шугам</td>
+                            <td>8x8 нүд</td>
+                        </tr>
+                        <tr>
+                            <td>Хэрэгсэл</td>
+                            <td>Хар, цагаан чулуу</td>
+                            <td>Хар, цагаан шашк</td>
+                        </tr>
+                        <tr>
+                            <td>Чулуу/шашкны хөдөлгөөн</td>
+                            <td>Тавьсан чулуу хөдөлдөггүй</td>
+                            <td>Диагональ дагуу явна</td>
+                        </tr>
+                        <tr>
+                            <td>Ялах арга</td>
+                            <td>Илүү нутаг эзлэх</td>
+                            <td>Бүх шашкыг идэх</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        </div>
+        </section>
 
-        <div class="cards-grid" style="margin-top: 15px;">
-            <div class="card" id="goal">
-                <h3>Зорилго</h3>
-                <p>Мэдээллийн системийн салбарт мэдлэг болон ур чадвараа дээшлүүлж, ирээдүйд мэргэжлээрээ амжилттай
-                    ажиллах туршлага хуримтлуулах.</p>
-            </div>
-
-            <div class="card" id="contact">
-                <h3>Холбоо барих</h3>
-                <p>GitHub хаяг: <a href="https://github.com" target="_blank" style="color: #4CAF50;">GitHub Link</a></p>
-            </div>
-        </div>
     </main>
 
-    <footer class="footer">
-        <p>&copy; 2026 А.Эхрэмбилэг - Лаборатори 5</p>
+    <footer>
+        <p>&copy; 2026 Го ба Даам. Responsive статик вэб хуудас.</p>
     </footer>
+
+    <script>
+        var btn = document.getElementById('menuBtn');
+        var nav = document.getElementById('navLinks');
+
+        btn.addEventListener('click', function () {
+            nav.classList.toggle('open');
+        });
+
+        nav.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', function () {
+                nav.classList.remove('open');
+            });
+        });
+
+        function setDevice(type) {
+            var body = document.body;
+            body.classList.remove('sim-mobile', 'sim-tablet');
+
+            if (type === 'mobile') {
+                body.classList.add('sim-mobile');
+            } else if (type === 'tablet') {
+                body.classList.add('sim-tablet');
+            }
+        }
+    </script>
 
 </body>
 
